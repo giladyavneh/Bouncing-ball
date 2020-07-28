@@ -6,10 +6,10 @@ function Ball(x,y,r,color){
     this.color=color
 }
 Ball.prototype.draw=function(elem){
-    let ball=document.createElement("circle")
-    ball.setAttribute("cx",this.x)
-    ball.setAttribute("cy",this.y)
-    ball.setAttribute("r",this.r)
-    ball.setAttribute("fill",this.color)
-    elem.append(ball)
+    let ctx=elem.getContext("2d");
+    ctx.clearRect(0,0,elem.width,elem.height)
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.r,0,2*Math.PI);
+    ctx.fillStyle="white";
+    ctx.fill()
 }
