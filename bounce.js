@@ -5,11 +5,11 @@ function Ball(x,y,r,color){
     this.m=r;
     this.color=color
 }
-Ball.prototype.draw(elem){
+Ball.prototype.draw=function(elem){
     let ball=document.createElement("circle")
-    ball.cx=this.x
-    ball.cy=this.y
-    ball.r=this.r
-    ball.fill=this.color
+    ball.setAttribute("cx",this.x)
+    ball.setAttribute("cy",this.y)
+    ball.setAttribute("r",this.r)
+    ball.setAttribute("fill",this.color)
     elem.append(ball)
 }
