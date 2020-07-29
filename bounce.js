@@ -24,10 +24,29 @@ Ball.prototype.move=function(){
     this.addVector(this.v,this.acc)
     this.addVector(this,this.v)
 }
+Ball.prototype.colideWall=function(canvas){
+    if(this.y+this.r>=canvas.height){
+        this.y=canvas.height-this.r
+        this.v.y*=-1
+    }
+    if(this.y-this.r<=0){
+        this.y=this.r
+        this.v.y*=-1
+    }
+    if(this.x+this.r>=canvas.width){
+        this.x=canvas.width-this.r
+        this.v.x*=-1
+    }
+    
+    if(this.x-this.r<=0){
+        this.x=this.r
+        this.v.x*=-1
+    }
+}
 
 //Forces
 function gravity(obj){
-    obj.addVector(obj.acc,{x:0,y:0.7})
+    obj.addVector(obj.acc,{x:0,y:0.06})
 }
 
 //main
@@ -37,6 +56,7 @@ document.onload=update()
 function update(){
     gravity(ball)
     ball.move()
+    ball.colideWall(canvas)
     ball.draw(canvas)
     let stopID=requestAnimationFrame(update)
 }
