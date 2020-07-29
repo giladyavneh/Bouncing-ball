@@ -13,3 +13,10 @@ Ball.prototype.draw=function(elem){
     ctx.fillStyle="white";
     ctx.fill()
 }
+let ball=new Ball(500,150,50,"white")
+let canvas=document.querySelector("#canvas")
+document.onload=update()
+function update(){
+    ball.draw(canvas)
+    requestAnimationFrame(update)
+}
