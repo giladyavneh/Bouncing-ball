@@ -46,7 +46,7 @@ Ball.prototype.colideWall=function(canvas){
 
 //Forces
 function gravity(obj){
-    obj.addVector(obj.acc,{x:0,y:0.06})
+    obj.addVector(obj.acc,{x:0,y:0.7})
 }
 
 //main
@@ -54,6 +54,7 @@ let ball=new Ball(500,150,50,"white")
 let canvas=document.querySelector("#canvas")
 document.onload=update()
 function update(){
+    ball.acc={x:0,y:0}
     gravity(ball)
     ball.move()
     ball.colideWall(canvas)
