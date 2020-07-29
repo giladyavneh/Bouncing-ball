@@ -42,23 +42,23 @@ Ball.prototype.colideWall=function(canvas){
         this.v.x*=-1
     }
 }
-
+let g=document.getElementById("gravity").value;
+let w=document.getElementById("wind").value
 //Forces
-function gravity(obj){
-    obj.addVector(obj.acc,{x:0,y:0.7})
-}
-function wind(obj){
-    obj.addVector(obj.acc,{x:0.5,y:0})
-}
+
 
 //main
 let ball=new Ball(500,150,50,"white")
 let canvas=document.querySelector("#canvas")
 document.onload=update()
 function update(){
+    let Gravity={x:0,y:parseFloat(g)}
+    let Wind={x:parseFloat(w),y:0}
+    g=document.getElementById("gravity").value
+    w=document.getElementById("wind").value
     ball.acc={x:0,y:0}
-    gravity(ball)
-    wind(ball)
+    ball.addVector(ball.acc,Gravity)
+    ball.addVector(ball.acc,Wind)
     ball.move()
     ball.colideWall(canvas)
     ball.draw(canvas)
